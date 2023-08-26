@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const userController = require('../../controllers/userController');
 
-const User = require('../../models/User');
-
-router.get('/', (req, res) => {
-  // ...
-});
+router.get('/', userController.getAllUsers);
 
 router.post('/', (req, res) => {
   // ...
