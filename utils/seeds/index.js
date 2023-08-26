@@ -72,13 +72,13 @@ connection.once('open', async () => {
   const newUsers = buildFinalUsers()
 
   try {
-    await User.insertMany(newUsers)
+    await Users.insertMany(newUsers)
   } catch (err) {
     throw new Error(err) 
   }
 
   try {
-    await Thought.insertMany(newThoughts)
+    await Thoughts.insertMany(newThoughts)
   } catch (err) {
     throw new Error(err) 
   }

@@ -1,6 +1,6 @@
-const Users = require('./Users');
-const Thoughts = require('./Thoughts');
-const Reactions = require('./Reactions');
+const Users = require('./User');
+const Thoughts = require('./Thought');
+const Reactions = require('./Reaction');
 
 
 

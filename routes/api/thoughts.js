@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Thoughts = require('../../models/Thoughts');
+const Thought = require('../../models/Thought');
 
 router.get('/', (req, res) => {
   // ...

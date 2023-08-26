@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Reactions = require('../../models/Reactions');
+const Reaction = require('../../models/Reaction');
 
 router.get('/', (req, res) => {
   // ...
