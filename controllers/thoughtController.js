@@ -1,6 +1,7 @@
 const Thought = require('../models/Thought');
 
 module.exports = {
+  // get all thoughts
   async getAllThoughts(req, res) {
     try {
       const thoughts = await Thought.find();
@@ -9,4 +10,30 @@ module.exports = {
       res.status(500).json({ message: 'Internal Server Error getting all thoughts' });
     }
   },
+
+  // Create a new thought
+  async createThought(req, res) {
+    try {
+      const newThought = await Thought.create(req.body);
+      res.json(newThought);
+    } catch (err) {
+      res.status(500).json({ message: 'Internal Server Error creating a thought' });
+    }
+  },
+
+  async updateThought(req, res) {
+    try {
+      res.status(201).json({ message: 'updateThought method fired!' });
+    } catch {
+      res.status(500).json({ message: 'Internal Server Error updating a thought' });
+    }
+  },
+
+  async deleteThought(req, res) {
+    try {
+      res.status(201).json({ message: 'deleteThought method fired!' });
+    } catch {
+      res.status(500).json({ message: 'Internal Server Error deleting a thought' });
+    }
+  }
 };
