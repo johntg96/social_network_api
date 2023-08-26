@@ -21,6 +21,9 @@ module.exports = {
     }
   },
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TO-DO //////
+// - write code for updateUser() for PUT /api/users route.
   async updateUser(req, res) {
     try {
       res.status(201).json({ message: 'updateThought method fired!' });
@@ -29,6 +32,9 @@ module.exports = {
     }
   },
 
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TO-DO //////
+// - write code for deleteUser() for DELETE /api/users route.
   async deleteUser(req, res) {
     try {
       res.status(201).json({ message: 'deleteThought method fired!' });
