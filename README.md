@@ -4,10 +4,10 @@
 A backend API for a social networking type of site built with MongoDB and Express.  
   
 ## Installation  
-npm i  
+`npm i`
   
 ## Usage  
-npm run start  
+`npm run start`
   
 ## Questions  
 Contact me:  
