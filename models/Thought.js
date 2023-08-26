@@ -12,6 +12,10 @@ const thoughtSchema = new mongoose.Schema({
   created_at: {
     type: Date,
     required: true
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 

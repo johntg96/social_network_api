@@ -16,6 +16,10 @@ const reactionSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     required: true
+  },
+  thought: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Thought'
   }
 });
 
