@@ -1,9 +1,9 @@
-const connection = require('../config/connection');
+const connection = require('../../config/connection');
 const users = require("./users.json")
 const thoughts = require("./thoughts.json")
 const reactions = require("./reactions.json")
 
-const { User, Thought, Reaction } = require("../models")
+const { Users, Thoughts, Reactions } = require("../../models");
 
 function getRandom(min, max){
   return Math.floor(Math.random() * (max - min + 1) + min)

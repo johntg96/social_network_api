@@ -3,7 +3,6 @@ const router = express.Router();
 
 const Users = require('../../models/Users');
 
-// Define routes
 router.get('/', (req, res) => {
   // ...
 });
