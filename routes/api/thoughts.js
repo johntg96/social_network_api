@@ -5,6 +5,14 @@ const thoughtController = require('../../controllers/thoughtController');
 router.get('/', thoughtController.getAllThoughts);
 
 router.post('/', thoughtController.createThought);
+/*
+POST Request:
+{
+	"thoughtText": "new_username",
+	"username": "new_email",
+	"created_at": "01/01/2023"
+}
+*/
 
 router.put('/:thoughtId', thoughtController.updateThought);
 /*
