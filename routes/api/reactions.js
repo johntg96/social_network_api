@@ -1,18 +1,25 @@
 const express = require('express');
 const router = express.Router();
+const reactionController = require('../../controllers/reactionController');
 
-const Reaction = require('../../models/Reaction');
+router.get('/', reactionController.getAllReactions);
 
-router.get('/', (req, res) => {
-  // ...
-});
+router.post('/', reactionController.createReaction);
 
-router.post('/', (req, res) => {
-  // ...
-});
+router.put('/:reactionId', reactionController.updateReaction);
+/*
+PUT Request:
+http://localhost:3001/api/reactions/:id
+  {
+    "reactionBody": "Updated reaction body"
+  }
+*/
 
-router.delete('/:reactionId', (req, res) => {
-  // ...
-});
+router.delete('/:reactionId', reactionController.deleteReaction);
+/*
+DELETE Request:
+http://localhost:3001/api/reactions/:id
+  [no body]
+*/
 
 module.exports = router;

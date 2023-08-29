@@ -3,7 +3,7 @@ const users = require("./users.json")
 const thoughts = require("./thoughts.json")
 const reactions = require("./reactions.json")
 
-const { Users, Thoughts, Reactions } = require("../../models");
+const { User, Thought, Reaction } = require("../../models")
 
 function getRandom(min, max){
   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -68,19 +68,26 @@ connection.once('open', async () => {
   let thoughts = await connection.db.listCollections({ name: 'thoughts' }).toArray();
   if (thoughts.length) await connection.dropCollection('thoughts');
 
-  const newThoughts = buildFinalThoughts()
-  const newUsers = buildFinalUsers()
+  const newThoughts = buildFinalThoughts();
+  const newUsers = buildFinalUsers();
+  const newReactions = getRandomReactions();
 
   try {
-    await Users.insertMany(newUsers)
+    await User.insertMany(newUsers)
   } catch (err) {
     throw new Error(err) 
   }
 
   try {
-    await Thoughts.insertMany(newThoughts)
+    await Thought.insertMany(newThoughts)
   } catch (err) {
     throw new Error(err) 
+  }
+
+  try {
+    await Reaction.insertMany(newReactions);
+  } catch (err) {
+    console.error(err);
   }
 
   console.log("seeding complete")

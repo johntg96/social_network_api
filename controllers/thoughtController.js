@@ -1,7 +1,6 @@
 const Thought = require('../models/Thought');
 
 module.exports = {
-  // get all thoughts
   async getAllThoughts(req, res) {
     try {
       const thoughts = await Thought.find();
@@ -11,7 +10,6 @@ module.exports = {
     }
   },
 
-  // Create a new thought
   async createThought(req, res) {
     try {
       const newThought = await Thought.create(req.body);
@@ -21,25 +19,43 @@ module.exports = {
     }
   },
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// TO-DO //////
-// - write code for updateThought() for PUT /api/thoughts route.
+
   async updateThought(req, res) {
     try {
-      res.status(201).json({ message: 'updateThought method fired!' });
-    } catch {
+      const thoughtId = req.params.thoughtId;
+      const updatedThoughtData = req.body;
+
+      const updatedThought = await Thought.findByIdAndUpdate(
+        thoughtId,
+        updatedThoughtData,
+        { new: true }
+      );
+
+      if (!updatedThought) {
+        return res.status(404).json({ message: 'Thought not found' });
+      }
+
+      res.status(200).json({ message: 'Thought updated successfully', updatedThought });
+    } catch (error) {
+      console.error(error);
       res.status(500).json({ message: 'Internal Server Error updating a thought' });
     }
   },
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// TO-DO //////
-// - write code for deleteThought() for DELETE /api/thoughts route.
+
   async deleteThought(req, res) {
     try {
-      res.status(201).json({ message: 'deleteThought method fired!' });
-    } catch {
+      const thoughtId = req.params.thoughtId;
+      const deletedThought = await Thought.findByIdAndDelete(thoughtId);
+
+      if (!deletedThought) {
+        return res.status(404).json({ message: 'Thought not found' });
+      }
+
+      res.status(200).json();
+    } catch (error) {
+      console.error(error);
       res.status(500).json({ message: 'Internal Server Error deleting a thought' });
     }
-  }
+  },
 };
